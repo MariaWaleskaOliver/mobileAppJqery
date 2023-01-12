@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ListView</title>
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <script src="js/lib/jquery.validate.js"></script>
+    <script src="js/MOdatabase.js"></script>
+    <script src="js/MODAL.js"></script>
+    <script src="js/MOfacade.js"></script>
+    <script src="js/MOutil.js"></script>
+    <script src="js/MOglobal.js"></script>
+    <script src="js/eventclass.js"></script>
+    <link rel="stylesheet" href="css/MOmystyle.css">
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">
+
+</head>
+<body>
+    <!--Home Pg-->
+<div id="MOHomePage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <h1>MO Review A3</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#MOHomePage" data-icon="home"class="ui-btn-active ui state-persist">HOME</a></li>
+                <li><a href="#MOAddReviewPage" data-icon="plus" >Add</a></li>
+                <li><a href="#MOViewReviewPage" data-icon="grid" >Reviews</a></li>
+                <li><a href="#MOSettingsPage" data-icon="gear" >Settings</a></li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content">
+        <h1> Maria Oliveira's Review A3 APP</h1>
+
+        <p> Welcome to the Maria Oliveira's Review A3 App. A prototype designed for mobile programming class. This is teh first interation of the app to keep track of different paces you visited along with your review.</p>
+        <div class="firstImg" style=" height:250px;text-align: center;">
+            <img src="img/coracaoImg.png" style=" width: auto; max-height: 100%;">
+        </div>
+        <p>Please feel free to contact me if you have any suggestions!</p>
+
+        <a href="#" data-role="button" data-icon="plus" style="text-align: left"> Call:519.748.2526</a>
+        <a href="#" data-role="button" data-icon="plus" style="text-align: left"> Email:mmarinhodeolive1749@conestogac.on.ca</a>
+        <a href="#" data-role="button" data-icon="plus" style="text-align: left"> Web:www.conestogac.on.ca</a>
+
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h1>&copy; 2022 Maria Waleska</h1>
+    </footer>
+</div>
+<!-- Add Pag-->
+
+<div id="MOAddReviewPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <h1> Add Review</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#MOHomePage" data-icon="home">HOME</a></li>
+                <li><a href="#MOAddReviewPage" data-icon="plus" class="ui-btn-active ui state-persist" >Add</a></li>
+                <li><a href="#MOViewReviewPage" data-icon="grid" >Reviews</a></li>
+                <li><a href="#MOSettingsPage" data-icon="gear" >Settings</a></li>
+            </ul>
+        </div>
+
+    </header>
+        <section data-role="content" class="border">
+            <section>
+                <form id ="frmAdd">
+                    <label for="txtRestaurantName">Restaurant Name:</label>
+                    <input type="text" id="txtRestaurantName" name="txtRestaurantName" data-clear-btn="true">
+
+                    <label for="txtBusinessId">Business Id:</label>
+                    <input type="number" id="txtBusinessId" name="txtBusinessId">
+
+                    <label for="cmbState">Choose a State:</label>
+                    <select name="cmbState" id="cmbState" data-native-menu="false" multiple="multiple" data-iconpos="right">
+
+                    </select>
+
+                    <label for="emailId">Reviewer Email: </label>
+                    <input type="email" id="emailId" name="emailId" data-clear-btn="true">
+
+                    <label for="feedback">Reviewer Comments:</label>
+                    <textarea rows="5" cols="30" id="feedback" name="feedback"></textarea>
+
+                    <input type="checkbox" name="checkbox" id="checkbox">
+                    <label for="checkbox">Do you want to add your rating?</label>
+
+                    <div id="hideDiv">
+                        <label for="txtFoodQuality">Food Quality (0-5):</label>
+                        <input type="number" id="txtFoodQuality"  name="txtFoodQuality" value="0" data-clear-btn="true">
+
+                        <label for="txtServices"> Services (0-5): </label>
+                        <input type="number" id="txtServices"  name="txtServices" value="0" data-clear-btn="true">
+
+                        <label for="txtValue"> Value (0-5): </label>
+                        <input type="number" id="txtValue"  name="txtValue" value="0" data-clear-btn="true">
+
+                        <label for="sldAge">Overall Rating(1-100):</label>
+                        <input type="range" id="sldAge" name="sldAge" min="0" max="99" value="0" data-highlight="true">
+                    </div>
+                    <button id="btnSaveAddPage" class="ui-btn-active ui-state-persist"> Save</button>
+
+                </form>
+            </section>
+
+        </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h1>&copy; 2022 Maria Waleska</h1>
+    </footer>
+</div>
+
+<!-- Reviews Pag-->
+<div id="MOViewReviewPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <h1> List of Reviews </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#MOHomePage" data-icon="home">HOME</a></li>
+                <li><a href="#MOAddReviewPage" data-icon="plus" >Add</a></li>
+                <li><a href="#MOViewReviewPage" data-icon="grid" class="ui-btn-active ui state-persist" >Reviews</a></li>
+                <li><a href="#MOSettingsPage" data-icon="gear" >Settings</a></li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content">
+        <ul id="lvAll" data-role="listview" class="lstViewReview" name="lstViewReview" data-split-icon="gear">
+           <p>There is no reviews yet</p>
+        </ul>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h1>&copy; 2022 Maria Waleska</h1>
+    </footer>
+</div>
+<!-- Pag Settings-->
+
+<div id="MOSettingsPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <h1> Settings </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#MOHomePage" data-icon="home">HOME</a></li>
+                <li><a href="#MOAddReviewPage" data-icon="plus" >Add</a></li>
+                <li><a href="#MOViewReviewPage" data-icon="grid" >Reviews</a></li>
+                <li><a href="#MOSettingsPage" data-icon="gear" class="ui-btn-active ui state-persist" >Settings</a></li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content">
+        <label for="txtDefaultReviewerEnmail">Default Reviewer Email:</label>
+        <input type="text" id="txtDefaultReviewerEnmail" name="txtDefaultReviewerEnmail" data-clear-btn="true">
+        <button id="btnSaveDefault" class="ui-btn-active ui-state-persist"> Save Defaults</button>
+        <button id="btnClearDatabase" data-theme="a"> Clear DataBase</button>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h1>&copy; 2022 Maria Waleska</h1>
+    </footer>
+</div>
+    <!-- Review Pag Edit-->
+<div data-role="page" id="MOModifyReviewPage">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <h1> Modify Reviews </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#MOHomePage" data-icon="home">HOME</a></li>
+                <li><a href="#MOAddReviewPage" data-icon="plus" >Add</a></li>
+                <li><a href="#MOViewReviewPage" data-icon="grid" class="ui-btn-active ui state-persist" >Reviews</a></li>
+                <li><a href="#MOSettingsPage" data-icon="gear" >Settings</a></li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content" class="border">
+    <section>
+        <form id ="MOModifyReviewPageForm">
+            <label for="txtMOModifyReviewPageName">Restaurant Name:</label>
+            <input type="text" id="txtMOModifyReviewPageName" name="txtMOModifyReviewPageName">
+
+            <label for="MOModifyReviewPageId">Business Id:</label>
+            <input type="number" id="MOModifyReviewPageId" name="MOModifyReviewPageId">
+
+            <label for="MOModifyReviewPageCmbState">Choose a State:</label>
+            <select name="MOModifyReviewPageCmbState" id="MOModifyReviewPageCmbState" data-native-menu="false" multiple="multiple" data-iconpos="right">
+
+            </select>
+
+            <label for="MOModifyReviewPageEmailId">Reviewer Email:</label>
+            <input type="text" id="MOModifyReviewPageEmailId" name="MOModifyReviewPageEmailId">
+
+            <label for="MOModifyReviewPagefeedback">Reviewer Comments:</label>
+            <textarea rows="5" cols="30" id="MOModifyReviewPagefeedback" name="feedback"> </textarea>
+
+            <input type="checkbox" name="checkbox2" id="checkbox2">
+            <label for="checkbox2">Do you want to add your rating?</label>
+
+            <div id="hideDiv2">
+                <label for="txtFoodQuality2">Food Quality (0-5):</label>
+                <input type="number" id="txtFoodQuality2"  name="txtFoodQuality2" value="0" data-clear-btn="true">
+
+                <label for="txtServices2"> Services (0-5): </label>
+                <input type="number" id="txtServices2"  name="txtServices2" value="0" data-clear-btn="true">
+
+                <label for="txtValue2"> Value (0-5): </label>
+                <input type="number" id="txtValue2"  name="txtValue2" value="0" data-clear-btn="true">
+
+                <label for="sldAge2">Overall Rating(1-100):</label>
+                <input type="range" id="sldAge2" name="sldAge2" min="0" max="99" value="0" data-highlight="true">
+            </div>
+
+            <div data-role="controlgroup" data-type="horizontal">
+                <button id="btnCancel" class="ui-btn-a ui-state-persist"> Cancel</button>
+                <button id="btnDelete" class="ui-btn-b ui-btn" > Delete </button>
+                <button id="btnUpdateReview" class="ui-btn-active ui-state-persist">Update </button>
+            </div>
+
+        </form>
+    </section>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h1>&copy; 2022 Maria Waleska</h1>
+    </footer>
+</div>
+
+</body>
+</html>
